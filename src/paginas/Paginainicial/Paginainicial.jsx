@@ -1,9 +1,13 @@
 import Principal from "../../componentes/principal/principal";
 import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
 
+import { useNavigate } from 'react-router-dom';
+
 function Paginainicial() {
+  const navigate = useNavigate();
+
   return (
-    <Principal>
+    <Principal titulo= "página inicial">
       conteúdo principal
       <br />
       <BotaoCustomizado
@@ -18,8 +22,13 @@ function Paginainicial() {
       >
         cancelar
       </BotaoCustomizado>
-      <BotaoCustomizado aoClicar={() => alert("enviar clicado!")}>
-        enviar
+
+      <BotaoCustomizado aoClicar={() => navigate('/lista-produtos')}>
+        lista de produtos
+      </BotaoCustomizado>
+
+      <BotaoCustomizado tipo="secundario" aoClicar={() => navigate('/lista-tarefas')}>
+        lista de tarefas
       </BotaoCustomizado>
     </Principal>
   );

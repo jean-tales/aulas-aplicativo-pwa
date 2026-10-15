@@ -21,7 +21,7 @@ const produtos = [
 
 function PaginaListaProdutos() {
   return (
-    <Principal titulo="Lista de produtos">
+    <Principal titulo="Lista de produtos" voltarPara="/">
       {produtos.map((itemProduto, index) => {
         return (
           <div key={index} className="PaginaListaProdutos_item">
@@ -34,6 +34,7 @@ function PaginaListaProdutos() {
             })}
             <br />
             <strong>cores:</strong>
+
             <div className="PaginaListaProdutos_cores">
               {itemProduto.cores.map((itemCor) => {
                 return (
@@ -43,6 +44,7 @@ function PaginaListaProdutos() {
                 );
               })}
             </div>
+
           </div>
         );
       })}
