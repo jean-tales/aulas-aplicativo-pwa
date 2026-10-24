@@ -16,3 +16,4 @@ function Principal(props) {
 }
 
 export default Principal;
+/* {props.childrem} está acessando o conteúdo interno de <Principal> <Principal/> no componente Paginainicial.jsx */

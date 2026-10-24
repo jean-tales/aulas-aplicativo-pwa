@@ -8,6 +8,8 @@ import { FaTrashAlt } from "react-icons/fa";
 function PaginaListaTarefas() {
   const [descricaoTarefa, setDescricaoTarefa] = useState("");
   const [tarefas, setTarefas] = useState([]);
+  /*descriaoTarefa e usado para armazenar as imformações digitadas. o estádo inicial é vazio. */
+  /* tarefas é um array que vai receber as informaões do descricaoTarefa */
 
   const adicionarTarefa = () => {
     // tarefas.push(descricaoTarefa)
@@ -19,6 +21,8 @@ function PaginaListaTarefas() {
       alert("tarefa obrigatória");
     }
   };
+  /* no adicionarTarefa é adicionado no array tarefas o objeto novaTarefa que tem as propriedades id e descricao. setTarefas faz uma cópia do array tarefas para ser renderizado.*/
+
 
   const removerTarefa = (id) => {
     if (confirm("deseja realmente remover a tarefa?")) {
@@ -26,9 +30,11 @@ function PaginaListaTarefas() {
       setTarefas(tarefasAtualizadas);
     }
   };
+  /*no removerTarefa é passado a informacão item.id da linha 59 para o parâmetro genérico (id) da variavel. dentro do if tem uma variavel chamada tarefasAtualizadas. dentro da variavel, o array tarefas está sendo filtrado para poder excluir um item com id.   */
 
   return (
     <Principal titulo="Lista de Tarefas" voltarPara="/">
+
       <CampoCustomizado
         label="tarefa"
         type="text"
@@ -38,10 +44,14 @@ function PaginaListaTarefas() {
           setDescricaoTarefa(evento.target.value);
         }}
       />
+      {/*o CampoCustomizado é o input que recebe as propriedades label, type, placeholder, value, onChange.
+      o value serve para controlar o input. onChange serve para atualizar o que está sendo digitado no input.  */}
+
 
       <BotaoCustomizado tipo="primario" aoClicar={adicionarTarefa}>
         Adicionar tarefa
       </BotaoCustomizado>
+      {/* botão para adidionar uma tarefa. recebe uma propriedade que contem a variavel adicionarTarefa.*/}
 
       {tarefas.map((item) => {
         return (
@@ -51,14 +61,17 @@ function PaginaListaTarefas() {
           </div>
         );
       })}
+      {/* array tarefas sendo mapeado para ter acesso as informações dentro dele. dentro da função arrow, está sendo retornada uma div que mostra um item que tem dentro do array tarefas e um icone com nome de FaTrashAlt.*/}
 
       {!tarefas.length && (
         <span className="PaginaListaTarefas_vazia">
           nenhuma tarefa cadastrada.
         </span>
       )}
+
     </Principal>
   );
+
 }
 
 export default PaginaListaTarefas;

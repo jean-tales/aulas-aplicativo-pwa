@@ -51,5 +51,6 @@ function PaginaListaProdutos() {
     </Principal>
   );
 }
+/* componente PaginaListaProdutos retorna um componente chamado Principal. dentro do componente Principal, o array produtos está sendo mapeado para ter acesso a suas informações. o metodo map está passando as informações para a função arrow que retorna uma primeira div com o nome do produto, o preço do produto e as cores que estão envoltas em uma segunda div. a segunda div está dentro da primeira div. dentro da segunda div, o array cores está sendo mapeado e as informações estão sendo passadas para funcão arrow que retorna uma terceira div. */
 
 export default PaginaListaProdutos;

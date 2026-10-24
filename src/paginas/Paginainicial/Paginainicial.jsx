@@ -35,3 +35,5 @@ function Paginainicial() {
 }
 
 export default Paginainicial;
+
+/*  */
