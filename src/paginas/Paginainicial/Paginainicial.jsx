@@ -36,4 +36,4 @@ function Paginainicial() {
 
 export default Paginainicial;
 
-/*  */
+/* a proriedade aoClicar executa uma função arrow redireciona para uma página definida. exemplo: /lista-tarefas. /lista-tarefas é a rota que a função vai executar para levar para a página de lista de tarefas. */
