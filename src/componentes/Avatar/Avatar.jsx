@@ -20,3 +20,5 @@ function Avatar(props){
 }
 
 export default Avatar;
+
+/* o componente avatar é o elemento circular que fica no canto superior direito da tela e tem as iniciais jb.*/

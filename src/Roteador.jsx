@@ -26,3 +26,5 @@ function Roteador(){
 }
 
 export default Roteador;
+
+/* o componente roteador está sendo renderizado junto com cabecalho e rodape no app.jsx. a variavel const roteador armazena as rotas das paginas. path é o nome dado para rota e elemente é o componente que vai ser chamado quando o nome da rota for usado.*/
