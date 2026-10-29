@@ -4,12 +4,14 @@ import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizad
 import Principal from "../../componentes/principal/principal";
 import CampoCustomizado from "../../componentes/CampoCustomizado/CampoCustomizado";
 import { FaTrashAlt } from "react-icons/fa";
+import { buscarNoLocalStorage, salvarNoLocalStorage } from "../../servicos/localstorage.servico";
+import { toast } from 'react-toastify';
 
 function PaginaListaTarefas() {
   const [descricaoTarefa, setDescricaoTarefa] = useState("");
-  const [tarefas, setTarefas] = useState([]);
-  /*descriaoTarefa e usado para armazenar as imformações digitadas. o estádo inicial é vazio. */
-  /* tarefas é um array que vai receber as informaões do descricaoTarefa */
+  const [tarefas, setTarefas] = useState(buscarNoLocalStorage("tarefas") || []);
+  /*descriaoTarefa e usado para armazenar as imformações digitadas. o estádo inicial é vazio.*/
+  /*tarefas é um array que vai receber as informaões do descricaoTarefa*/
 
   const adicionarTarefa = () => {
     // tarefas.push(descricaoTarefa)
@@ -17,17 +19,22 @@ function PaginaListaTarefas() {
       const novaTarefa = { id: Date.now(), descricao: descricaoTarefa };
       setTarefas([...tarefas, novaTarefa]);
       setDescricaoTarefa("");
+      salvarNoLocalStorage("tarefas", [...tarefas, novaTarefa])
+      toast.success("tarefa adicionada");
     } else {
-      alert("tarefa obrigatória");
+      toast.error("Preencha os campos obrigatórios!");
     }
   };
-  /* no adicionarTarefa é adicionado no array tarefas o objeto novaTarefa que tem as propriedades id e descricao. setTarefas faz uma cópia do array tarefas para ser renderizado.*/
+  /*no adicionarTarefa é adicionado no array tarefas o objeto novaTarefa que tem as propriedades id e descricao. setTarefas faz uma cópia do array tarefas para ser renderizado.
+  setDescricaoTarefa(""); limpa o campo.*/
 
 
   const removerTarefa = (id) => {
     if (confirm("deseja realmente remover a tarefa?")) {
       const tarefasAtualizadas = tarefas.filter((item) => item.id !== id);
       setTarefas(tarefasAtualizadas);
+      salvarNoLocalStorage("tarefas", tarefasAtualizadas);
+      toast.success("tarefa removida");
     }
   };
   /*no removerTarefa é passado a informacão item.id da linha 59 para o parâmetro genérico (id) da variavel. dentro do if tem uma variavel chamada tarefasAtualizadas. dentro da variavel, o array tarefas está sendo filtrado para poder excluir um item com id.   */
@@ -77,3 +84,6 @@ function PaginaListaTarefas() {
 export default PaginaListaTarefas;
 
 // .trim limpa os espaços ao redor de uma string.
+
+/* const tarefasAtualizadas = [...tarefas, novaTarefa];
+setTarefas(tarefasAtualizadas); */

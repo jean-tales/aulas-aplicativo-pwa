@@ -30,6 +30,13 @@ function Paginainicial() {
       <BotaoCustomizado tipo="secundario" aoClicar={() => navigate('/lista-tarefas')}>
         lista de tarefas
       </BotaoCustomizado>
+
+      <BotaoCustomizado tipo="secundario" aoClicar={() => navigate('cadastro-cliente')}>
+        cadastro de cliente
+      </BotaoCustomizado>
+
+
+
     </Principal>
   );
 }
