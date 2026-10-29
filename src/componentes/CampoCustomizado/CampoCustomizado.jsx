@@ -6,7 +6,6 @@ function CampoCustomizado(props){
             {props.label}
         </span>
         <input {...props} className="CampoCustomizado_input" />
-        
     </div>
 }
 

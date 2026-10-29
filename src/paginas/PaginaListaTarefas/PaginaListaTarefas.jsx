@@ -25,8 +25,7 @@ function PaginaListaTarefas() {
       toast.error("Preencha os campos obrigatórios!");
     }
   };
-  /*no adicionarTarefa é adicionado no array tarefas o objeto novaTarefa que tem as propriedades id e descricao. setTarefas faz uma cópia do array tarefas para ser renderizado.
-  setDescricaoTarefa(""); limpa o campo.*/
+  /*no adicionarTarefa é adicionado no array tarefas o objeto novaTarefa que tem as propriedades id e descricao. setTarefas faz uma cópia do array tarefas para ser renderizado. setDescricaoTarefa("") controla o estado inicial do imput que está inicialmente vazio. quando o  setDescricaoTarefa("") é chamado, o imput volta para o estado inicial limpado o imput.*/
 
 
   const removerTarefa = (id) => {
