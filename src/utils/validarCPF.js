@@ -37,3 +37,5 @@ function validarCPF(cpf) {
 }
 
 export default validarCPF;
+
+/* código para verificar se o cpf digitado no input e válido. obs: o código só verifica se o cpf é válido, náo se é verdadeiro. esse codigo é usado no componente PaginaCadastroCliente.*/

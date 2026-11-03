@@ -17,3 +17,5 @@ export const formatarComMascara = (value, mask) => {
 
 export const MASCARA_TELEFONE = "(##) #####-####";
 export const MASCARA_CPF= "###.###.###-##";
+
+/* a mascara é uma padronização para ajudar a escrever as informações da forma correta no input. a mascara ajuda dizendo como tem que ser escrita a informação. */

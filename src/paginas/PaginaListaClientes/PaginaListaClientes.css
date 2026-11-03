@@ -1,5 +1,22 @@
-.PaginaListaClientes_item{
-    background-color: rgb(129, 121, 11);
-    border-radius: 10px;
-    border: #ccc;
+.PaginaListaClientes_cliente{
+    background-color: rgb(189, 188, 179);
+    border-radius: 5px;
+    border: #d31a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px;
 }
+
+.PaginaListaClientes_cliente:hover{
+    transform: scale(1.01);
+    box-shadow: #656d6d 5px 5px 8px;
+}
+
+.PaginaListaClientes_item{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    
+}
+

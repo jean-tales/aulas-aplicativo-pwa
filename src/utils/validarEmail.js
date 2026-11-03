@@ -4,3 +4,5 @@ function validarEmail(email) {
 }
 
 export default validarEmail;
+
+/* código para verificar se o email digitado no input e válido. esse codigo é usado no componente PaginaCadastroCliente.*/
