@@ -27,8 +27,8 @@ function PaginaListaClientes(){
 
      };
 
-
-    return <Principal titulo="lista dos clientes">
+    
+    return <Principal titulo="lista dos clientes" voltarPara="/">
         {listaClientes.map((item, index) =>{
             return <div key={index} className="PaginaListaClientes_cliente">
               <div className="PaginaListaClientes_item">

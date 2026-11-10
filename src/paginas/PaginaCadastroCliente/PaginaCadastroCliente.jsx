@@ -52,9 +52,9 @@ function PaginaCadastroCliente() {
       return;
     }
 
-    salvarCliente(formCliente)
+    salvarCliente(formCliente);
     toast.success("cliente salvo com sucesso");
-    navigate ('/lista-cliente')
+    navigate('/lista-clientes');
 
     /* variavel que é um objeto que recebe as informações digitadas nos inputs.*/
     // const cliente = {
@@ -73,7 +73,7 @@ function PaginaCadastroCliente() {
   const titulo = formCliente.id ? "editar cliente" : "novo cliente";
 
   return (
-    <Principal titulo={titulo} voltarPara="/lista-cliente">
+    <Principal titulo={titulo} voltarPara="/">
       <CampoCustomizado
         label="Nome"
         value={formCliente.nome}
