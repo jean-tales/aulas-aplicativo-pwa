@@ -7,11 +7,14 @@ import { useState } from "react";
 import { salvarNoLocalStorage } from "../../servicos/localstorage.servico";
 import { FaPencil } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import CampoCustomizado from "../../componentes/CampoCustomizado/CampoCustomizado";
 
 
 function PaginaListaClientes(){
     const navigate = useNavigate();
      const [listaClientes, setListaClientes] = useState(buscarClientes());
+     const [termoPesquisa, setTermoPesquisa] = useState("");
+
 
      const excluirCliente = (clientesParaExcluir) => {
        if (confirm(`deseja realmente remover o cliente: ${clientesParaExcluir.nome}`)){
@@ -27,9 +30,14 @@ function PaginaListaClientes(){
 
      };
 
+     const clientesFiltrados = listaClientes.filter((item) => {
+      return item.nome.toLowerCase().includes(termoPesquisa)
+     });
+
     
     return <Principal titulo="lista dos clientes" voltarPara="/">
-        {listaClientes.map((item, index) =>{
+         <CampoCustomizado label="pesquisar" placeholder="digite o nome do cliente" value={termoPesquisa} onChange={(e) => setTermoPesquisa(e.target.value)}/>
+        {clientesFiltrados.map((item, index) =>{
             return <div key={index} className="PaginaListaClientes_cliente">
               <div className="PaginaListaClientes_item">
                  <strong>{item.nome}</strong>
@@ -53,3 +61,4 @@ function PaginaListaClientes(){
 
 
 export default PaginaListaClientes;
+
