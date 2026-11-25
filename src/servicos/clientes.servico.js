@@ -7,8 +7,8 @@ import { buscarNoLocalStorage } from "./localstorage.servico";
       cliente.id = Date.now();
       clientes.push(cliente);
     } else {
-      const index = clientes.findIndex(() => cliente.id === cliente.id);
-      cliente[index] = cliente;
+      const index = clientes.findIndex((c) => c.id === cliente.id);
+      clientes[index] = cliente;
     }
 
     salvarNoLocalStorage("clientes", clientes)

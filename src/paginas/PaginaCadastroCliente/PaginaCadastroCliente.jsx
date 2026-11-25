@@ -158,6 +158,7 @@ function PaginaCadastroCliente() {
       <BotaoCustomizado tipo="primario" aoClicar={salvar}>
         salvar
       </BotaoCustomizado>
+      
     </Principal>
   );
 }
