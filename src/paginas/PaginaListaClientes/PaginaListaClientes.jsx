@@ -40,14 +40,16 @@ function PaginaListaClientes(){
         {clientesFiltrados.map((item, index) =>{
             return <div key={index} className="PaginaListaClientes_cliente">
               <div className="PaginaListaClientes_item">
-                 <strong>{item.nome}</strong>
-                 <strong>{item.email}</strong>
-                 <strong>{item.DataNascimento}</strong>
-                 <strong>{item.telefone}</strong>
-                 <strong>{item.cpf}</strong>
+                 <strong>nome:{item.nome}</strong>
+                 <strong>email:{item.email}</strong>
+                 <strong>data de nascimento:{item.DataNascimento}</strong>
+                 <strong>telefone:{item.telefone}</strong>
+                 <strong>cpf:{item.cpf}</strong>
               </div>
+               <div className="icones">
                 <BsFillTrash3Fill size={24} color="red" onClick={() => excluirCliente(item)} />
                 <FaPencil onClick={() => editarCliente(item)} />
+               </div>
             </div>
         })}
 

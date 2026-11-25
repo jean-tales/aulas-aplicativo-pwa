@@ -12,9 +12,6 @@ import Rodape from './componentes/rodape/rodape'
 import Roteador from './Roteador'
 
 
-
-
-
 function App() {
   return (
    <>

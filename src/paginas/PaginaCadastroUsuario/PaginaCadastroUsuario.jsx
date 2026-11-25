@@ -1,25 +1,78 @@
 import CampoCustomizado from "../../componentes/CampoCustomizado/CampoCustomizado";
 import Principal from "../../componentes/principal/principal";
 import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizado";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { novoUsuario } from "../../servicos/usuarios.servico";
 
-function PaginaCadastroUsuario(){
-    const [formUsuario, setFormUsuario] = useState({
-        nome: "",
-        email: "",
-        senha: "",
-        confirmarSenha: "",
-      });
+function PaginaCadastroUsuario() {
+  const [formUsuario, setFormUsuario] = useState({
+    nome: "",
+    email: "",
+    senha: "",
+    confirmarSenha: "",
+  });
 
-      const salvar = () => {}
+  const salvar = () => {
+    try {
+      if (
+        !formUsuario.nome.trim() ||
+        !formUsuario.email.trim() ||
+        !formUsuario.senha.trim()
+      ) {
+        toast.error("Preencha todos os campos.");
+        return;
+      }
 
-    return <Principal titulo="novo usuario">
-        <CampoCustomizado label="nome" type="text" value={formUsuario.nome} onChange={(e) => setFormUsuario({...formUsuario, nome: e.target.value})}/>
-        <CampoCustomizado label="email" type="text" value={formUsuario.email}/>
-        <CampoCustomizado label="senha" type="text" value={formUsuario.senha}/>
-        <CampoCustomizado label="confirmar senha" type="text" value={formUsuario.confirmarSenha}/>
-        <BotaoCustomizado>salvar</BotaoCustomizado>
+      if (formUsuario.senha !== formUsuario.confirmarSenha) {
+        toast.error("As senhas não coincidem.");
+        return;
+      }
+
+      novoUsuario(formUsuario);
+      toast.success("Usuário cadastrado com sucesso!");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  return (
+    <Principal titulo="novo usuario" voltarPara="/login">
+      <CampoCustomizado
+        label="nome"
+        type="text"
+        value={formUsuario.nome}
+        onChange={(e) =>
+          setFormUsuario({ ...formUsuario, nome: e.target.value })
+        }
+      />
+      <CampoCustomizado
+        label="email"
+        type="text"
+        value={formUsuario.email}
+        onChange={(e) =>
+          setFormUsuario({ ...formUsuario, email: e.target.value })
+        }
+      />
+      <CampoCustomizado
+        label="senha"
+        type="password"
+        value={formUsuario.senha}
+        onChange={(e) =>
+          setFormUsuario({ ...formUsuario, senha: e.target.value })
+        }
+      />
+      <CampoCustomizado
+        label="confirmar senha"
+        type="password"
+        value={formUsuario.confirmarSenha}
+        onChange={(e) =>
+          setFormUsuario({ ...formUsuario, confirmarSenha: e.target.value })
+        }
+      />
+      <BotaoCustomizado aoClicar={salvar}>salvar</BotaoCustomizado>
     </Principal>
+  );
 }
 
-export default PaginaCadastroUsuario
+export default PaginaCadastroUsuario;
