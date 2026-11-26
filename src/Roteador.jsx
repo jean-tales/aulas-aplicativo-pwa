@@ -5,13 +5,26 @@ import PaginaCadastroCliente from './paginas/PaginaCadastroCliente/PaginaCadastr
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import PaginaListaClientes from './paginas/PaginaListaClientes/PaginaListaClientes';
 import PaginaCadastroUsuario from './paginas/PaginaCadastroUsuario/PaginaCadastroUsuario';
+import PaginaLogin from './paginas/PaginaLogin/PaginaLogin';
+import ValidarAutenticacao from './ValidarAutenticacao';
 
 const roteador = createBrowserRouter([
+
+
+   {
+   path: 'login',
+   element: <PaginaLogin />,
+ },
  {
    path: 'cadastro-usuario',
    element: <PaginaCadastroUsuario />,
  },
- {
+ 
+
+{
+   path: "",
+   element: <ValidarAutenticacao />,
+   children: [{
    path: '',
    element: <Paginainicial />,
  },
@@ -30,7 +43,8 @@ const roteador = createBrowserRouter([
  {
     path: 'lista-clientes',
     element: <PaginaListaClientes/>,
- },
+ },]
+}
 
 ]);
 

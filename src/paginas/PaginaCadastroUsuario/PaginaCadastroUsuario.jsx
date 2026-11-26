@@ -4,8 +4,11 @@ import BotaoCustomizado from "../../componentes/BotaoCustomizado/BotaoCustomizad
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { novoUsuario } from "../../servicos/usuarios.servico";
+import validarEmail from "../../utils/validarEmail";
+import { useNavigate } from "react-router-dom";
 
 function PaginaCadastroUsuario() {
+  const navigate = useNavigate();
   const [formUsuario, setFormUsuario] = useState({
     nome: "",
     email: "",
@@ -24,6 +27,10 @@ function PaginaCadastroUsuario() {
         return;
       }
 
+      if (!validarEmail(formUsuario.email)) {
+       toast.error("email invalido");
+      }
+
       if (formUsuario.senha !== formUsuario.confirmarSenha) {
         toast.error("As senhas não coincidem.");
         return;
@@ -31,6 +38,7 @@ function PaginaCadastroUsuario() {
 
       novoUsuario(formUsuario);
       toast.success("Usuário cadastrado com sucesso!");
+      navigate('/login');
     } catch (error) {
       toast.error(error.message);
     }
@@ -48,7 +56,7 @@ function PaginaCadastroUsuario() {
       />
       <CampoCustomizado
         label="email"
-        type="text"
+        type="email"
         value={formUsuario.email}
         onChange={(e) =>
           setFormUsuario({ ...formUsuario, email: e.target.value })
@@ -70,7 +78,9 @@ function PaginaCadastroUsuario() {
           setFormUsuario({ ...formUsuario, confirmarSenha: e.target.value })
         }
       />
-      <BotaoCustomizado aoClicar={salvar}>salvar</BotaoCustomizado>
+      <BotaoCustomizado tipo="primario" aoClicar={salvar}>
+        salvar
+      </BotaoCustomizado>
     </Principal>
   );
 }
